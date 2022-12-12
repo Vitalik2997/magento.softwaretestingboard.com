@@ -9,6 +9,8 @@ check_that_logged_in_acc = (By.CLASS_NAME, 'logged-in')
 login_is_not_correct = (By.XPATH, '//div[@class="message-error error message"]')
 passwd_alert = (By.XPATH, '//div[@class="mage-error"]')
 check_that_contact_info = (By.XPATH, '//div[@class="box-content"]')
+button_action_switch = (By.CSS_SELECTOR, 'button[class="action switch"]')
+button_my_acc = (By.LINK_TEXT, 'My Account')
 
 
 class SignIn(BasePage):
@@ -48,3 +50,6 @@ class SignIn(BasePage):
         contact_info = self.find(check_that_contact_info)
         return 'Vitali Zalutski', 'test12345@mail.ru' in contact_info.text
 
+    def click_button_action_switch_my_acc(self):
+        self.find(button_action_switch).click()
+        self.find(button_my_acc).click()

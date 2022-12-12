@@ -10,6 +10,8 @@ class BasePage:
         self.my_acc_page_url = 'https://magento.softwaretestingboard.com/customer/account/'
         self.gear_page_url = 'https://magento.softwaretestingboard.com/gear.html'
         self.wish_list_url = 'https://magento.softwaretestingboard.com/wishlist'
+        self.men_page_url = 'https://magento.softwaretestingboard.com/men.html'
+        self.shipping_address_url = 'https://magento.softwaretestingboard.com/checkout/#shipping'
 
     def find(self, args: tuple):
         by_name, by_val = args

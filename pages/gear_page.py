@@ -1,7 +1,6 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
+from time import sleep
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -40,6 +39,7 @@ class Gear(BasePage):
 
     def open_gear_page(self):
         self.driver.get(self.gear_page_url)
+        sleep(1) #for demonstration
 
     def open_wishlist_page(self):
         self.driver.get(self.wish_list_url)
@@ -99,6 +99,7 @@ class Gear(BasePage):
 
     def watches_add_to_compare(self):
         self.find(watches_action_to_compare).click()
+        sleep(2) #for demonstration
 
     def watches_check_product_in_compare(self):
         check_product_name = self.find(check_that_block_compare)
@@ -132,17 +133,17 @@ class Gear(BasePage):
                    message='Sprite Yoga Companion Kit has been added to your Wish List. Click here to continue shopping.')
         return True
 
-    # def move_to_product_and_remove(self):
-    #     move_to_product = self.find(move_to_product_wish_list)
-    #     click_remove = self.find(button_remove_from_wish_list)
-    #     ActionChains(self.driver).move_to_element(move_to_product).move_to_element(click_remove).click()
-
     def click_remove_item_wish_list(self):
         remove = self.finds(button_remove_from_wish_list)
         remove[0].click()
+        sleep(2)
 
     def check_clear_wish_list(self):
         cleared = self.find(message_no_items_in_wish_list)
         return 'Sprite Yoga Companion Kit has been removed from your Wish List.' in cleared.text
 
-
+    def wait_remove_item_wish_list(self):
+        wait = WebDriverWait(self.driver, 5)
+        wait.until((EC.visibility_of_element_located(button_remove_from_wish_list)),
+                   )
+        return True

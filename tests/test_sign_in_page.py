@@ -25,6 +25,7 @@ def test_sign_in_passed(driver):
     sign_in = SignIn(driver)
     sign_in.open_sign_page()
     sign_in.enter_login_details_click_sign_in(email='test12345@mail.ru', passwd='123456789Qawsedrf')
+    sign_in.click_button_action_switch_my_acc()
     assert sign_in.check_that_contact_information()
 
 

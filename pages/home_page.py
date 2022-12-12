@@ -1,9 +1,12 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 create_acc_clickable = (By.LINK_TEXT, 'Create an Account')
-button_sign_in = (By.CSS_SELECTOR, 'li[class="authorization-link"]')
 search_field = (By.CSS_SELECTOR, 'input[id="search"]')
+button_sign_in = (By.CSS_SELECTOR, 'li[class="authorization-link"]')
 button_cart = (By.CSS_SELECTOR, 'a[class="action showcart"]')
 button_whats_new = (By.CSS_SELECTOR, 'a[id="ui-id-3"]')
 button_women = (By.CSS_SELECTOR, 'a[id="ui-id-4"]')
@@ -13,7 +16,14 @@ button_training = (By.CSS_SELECTOR, 'a[id="ui-id-7"]')
 button_sale = (By.CSS_SELECTOR, 'a[id="ui-id-8"]')
 button_return_home_page = (By.CSS_SELECTOR, 'a[class="logo"]')
 button_search_terms = (By.LINK_TEXT, 'Search Terms')
+button_action_switch = (By.CSS_SELECTOR, 'button[class="action switch"]')
+button_sign_out = (By.CSS_SELECTOR, 'li[class="authorization-link"]')
+button_subscribe = (By.CSS_SELECTOR, 'button[class="action subscribe primary"]')
 search_terms_title = (By.CSS_SELECTOR, 'div[class="page-title-wrapper"]')
+check_that_sign_out = (By.CSS_SELECTOR, 'div[class="page-title-wrapper"]')
+input_field_for_subscription = (By.ID, 'newsletter')
+alert_message_email_already_subscribed = (By.XPATH, '//div[@role="alert" and @class="messages"]')
+
 
 class HomePage(BasePage):
     def __init__(self, driver):
@@ -76,4 +86,25 @@ class HomePage(BasePage):
         popular_search = self.find(search_terms_title)
         return 'Popular Search Terms' in popular_search.text
 
+    def click_button_action_switch(self):
+        self.find(button_action_switch).click()
+
+    def click_button_sign_out(self):
+        self.find(button_sign_out).click()
+
+    def check_that_sign_out_in_acc(self):
+        check = self.find(check_that_sign_out)
+        return 'You are signed out' in check.text
+
+    def input_email_for_subscribe(self, email):
+        self.find(input_field_for_subscription).send_keys(email)
+
+    def click_button_subscribe(self):
+        self.find(button_subscribe).click()
+
+    def alert_email_already_subscribed(self):
+        wait = WebDriverWait(self.driver, 5)
+        wait.until((EC.visibility_of_element_located(alert_message_email_already_subscribed)),
+                   message='This email address is already subscribed.')
+        return True
 
