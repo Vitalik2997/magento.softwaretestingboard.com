@@ -8,4 +8,4 @@ test run sequence:
 5. pytest -v -m gear --reruns 2 --alluredir reports
 6. pytest -v -m men --reruns 2 --alluredir reports 
 7. pytest -v -m sign_out --aluredir reports 
-allure serve reports
+8. allure serve reports
