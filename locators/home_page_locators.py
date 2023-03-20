@@ -1,0 +1,22 @@
+from selenium.webdriver.common.by import By
+
+
+create_acc_clickable = (By.LINK_TEXT, 'Create an Account')
+search_field = (By.CSS_SELECTOR, 'input[id="search"]')
+button_sign_in = (By.CSS_SELECTOR, 'li[class="authorization-link"]')
+button_cart = (By.CSS_SELECTOR, 'a[class="action showcart"]')
+button_whats_new = (By.CSS_SELECTOR, 'a[id="ui-id-3"]')
+button_women = (By.CSS_SELECTOR, 'a[id="ui-id-4"]')
+button_men = (By.CSS_SELECTOR, 'a[id="ui-id-5"]')
+button_gear = (By.CSS_SELECTOR, 'a[id="ui-id-6"]')
+button_training = (By.CSS_SELECTOR, 'a[id="ui-id-7"]')
+button_sale = (By.CSS_SELECTOR, 'a[id="ui-id-8"]')
+button_return_home_page = (By.CSS_SELECTOR, 'a[class="logo"]')
+button_search_terms = (By.LINK_TEXT, 'Search Terms')
+button_action_switch = (By.CSS_SELECTOR, 'button[class="action switch"]')
+button_sign_out = (By.CSS_SELECTOR, 'li[class="authorization-link"]')
+button_subscribe = (By.CSS_SELECTOR, 'button[class="action subscribe primary"]')
+search_terms_title = (By.CSS_SELECTOR, 'div[class="page-title-wrapper"]')
+check_that_sign_out = (By.CSS_SELECTOR, 'div[class="page-title-wrapper"]')
+input_field_for_subscription = (By.ID, 'newsletter')
+alert_message_email_already_subscribed = (By.XPATH, '//div[@role="alert" and @class="messages"]')
