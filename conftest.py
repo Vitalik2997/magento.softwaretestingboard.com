@@ -10,8 +10,9 @@ from selenium.common.exceptions import NoSuchElementException
 @pytest.fixture(scope='function')
 def driver():
     options = Options()
+    # options.add_argument('--headless')
     options.add_argument('start-maximized')
-    options.add_argument(r'user-data-dir=C:\Пользователи\Виталик\projects\magento.softwaretestingboard.com\info_session')
+    # options.add_argument(r'user-data-dir=C:\Пользователи\Виталик\projects\magento.softwaretestingboard.com\info_session')
     chrome_driver = webdriver.Chrome(options=options)
     chrome_driver.implicitly_wait(10)
     yield chrome_driver
